@@ -29,7 +29,18 @@ const controller = {
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		// Do the magic
+		let agregado = req.body
+		console.log(agregado)
+		products.push({
+			id: products.length + 1,
+			name: agregado.name,
+			price: agregado.price,
+			discount: agregado.discount,
+			category: agregado.category,
+			description: agregado.description
+		})
+		fs.writeFileSync(productsFilePath, JSON.stringify(products), "utf-8");
+		res.redirect("/products")
 	},
 
 	// Update - Form to edit
