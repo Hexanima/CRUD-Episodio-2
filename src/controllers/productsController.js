@@ -37,6 +37,7 @@ const controller = {
       discount: agregado.discount,
       category: agregado.category,
       description: agregado.description,
+      image: req.file.filename
     });
     fs.writeFileSync(productsFilePath, JSON.stringify(products), "utf-8");
     res.redirect("/products");
@@ -62,7 +63,7 @@ const controller = {
           discount: change.discount || producto.discount,
           category: change.category || producto.category,
           description: change.description || producto.description,
-          image: producto.image,
+          image: req.file ? req.file.filename : producto.image,
         };
       }
       return {
