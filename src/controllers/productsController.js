@@ -37,7 +37,7 @@ const controller = {
       discount: agregado.discount,
       category: agregado.category,
       description: agregado.description,
-      image: req.file.filename
+      image: req.file ? req.file.filename : "default-image.png"
     });
     fs.writeFileSync(productsFilePath, JSON.stringify(products), "utf-8");
     res.redirect("/products");
